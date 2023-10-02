@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { menudata } from "src/utils/staticdata/sidebar-data";
 const SideBar = ({
@@ -8,7 +7,7 @@ const SideBar = ({
   setCollapse,
 }: {
   collapse: boolean;
-  setCollapse?: React.Dispatch<React.SetStateAction<boolean>>;
+  setCollapse: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const [open, setOpen] = React.useState("");
 
@@ -22,7 +21,12 @@ const SideBar = ({
         to={"/"}
         className="sidebar-logo-section h-20 border-b flex items-center justify-center"
       >
-        <img src="./aitclogo.png" alt="Aitc logo" height={50} width={141} />
+        <img
+          src={!collapse ? "/aitclogo.png" : "/aitcsmall-logo.png"}
+          alt="Aitc logo"
+          height={50}
+          width={!collapse ? 141 : 50}
+        />
       </Link>
       <div className="w-full flex p-4 flex-col">
         {menudata?.map(
@@ -37,17 +41,31 @@ const SideBar = ({
                       } else {
                         setOpen(item?.name);
                       }
+                      if (collapse) {
+                        setCollapse(!collapse);
+                      }
                     }}
                     className="w-full cursor-pointer hover:bg-slate-100  h-10 flex justify-between items-center"
                   >
                     <div className="flex items-center gap-2">
                       {item?.icon}
-                      <h1 className="font-semibold ">{item?.name}</h1>
+                      <h1 className={`font-semibold ${collapse && "hidden"}`}>
+                        {item?.name}
+                      </h1>
                     </div>
-                    {item?.name === open ? <BiChevronUp /> : <BiChevronDown />}
+                    {!collapse && (
+                      <>
+                        {" "}
+                        {item?.name === open ? (
+                          <BiChevronUp />
+                        ) : (
+                          <BiChevronDown />
+                        )}
+                      </>
+                    )}
                   </div>
 
-                  {item?.name === open && (
+                  {item?.name === open && !collapse && (
                     <>
                       {item?.submenu?.map((submenu: any) => (
                         <Link
@@ -65,12 +83,22 @@ const SideBar = ({
             } else {
               return (
                 <Link
-                  key={item?.name}
+                  onClick={() => {
+                    if (open !== "") {
+                      setOpen("");
+                    } else {
+                      setOpen(item?.name);
+                    }
+                  }}
                   to={item?.path}
-                  className="w-full cursor-pointer hover:bg-slate-100  h-10 flex items-center gap-2"
+                  className="w-full cursor-pointer hover:bg-slate-100  h-10 flex justify-between items-center"
                 >
-                  {item?.icon}
-                  <h1 className="font-semibold ">{item?.name}</h1>
+                  <div className="flex items-center gap-2">
+                    {item?.icon}
+                    <h1 className={`font-semibold ${collapse && "hidden"}`}>
+                      {item?.name}
+                    </h1>
+                  </div>
                 </Link>
               );
             }
