@@ -6,6 +6,10 @@
       "dom.iterable",
       "esnext"
     ],
+     "baseUrl": "./",
+    "paths": {
+      "@lstaticdata/*": ["src/utils/lstaticdata/*"]
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
