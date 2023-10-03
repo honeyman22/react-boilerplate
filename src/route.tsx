@@ -6,6 +6,7 @@ import Partners from "./pages/Home/partners";
 import Layout from "./components/common/layout";
 import Testimonial from "./pages/Home/testimonial";
 import Dashboard from "./pages/dashboard";
+import Login from "./login";
 
 export const router = createBrowserRouter([
   {
@@ -26,4 +27,21 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  // {
+  //   path: "reset-password/:id",
+  //   element: <ResetPage />,
+  // },
+  // {
+  //   path: "redirect/:expired",
+  //   element: <CheckoutPage />,
+  // },
+
+  // {
+  //   path: "*",
+  //   element: <ErrorPage />,
+  // },
 ]);
