@@ -59,6 +59,7 @@ export const CustomInput = ({
           type="text"
           name={id}
           id={id}
+          placeholder={placeholder}
           {...register(id)}
           readOnly={isReadonly}
           className={classNames(

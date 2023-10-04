@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+::placeholder {
+  font-weight: normal;
+}
 
 /* header section css */
 .header-wrapper {
