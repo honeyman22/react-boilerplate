@@ -8,6 +8,7 @@ module.exports = {
       },
       colors: {
         primary: "#FF7500",
+        primary_text: "#586A84",
       },
     },
   },

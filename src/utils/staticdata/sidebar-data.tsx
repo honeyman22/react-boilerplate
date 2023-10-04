@@ -22,4 +22,26 @@ export const menudata = [
       },
     ],
   },
+  {
+    name: "Role Management",
+    path: "/role-management",
+    icon: (
+      <img
+        src="/role-management-icon.png"
+        alt="role management"
+        height={20}
+        width={20}
+      />
+    ),
+    submenu: [
+      {
+        name: "Role",
+        path: "/role-management/roles",
+      },
+      {
+        name: "Testimonial",
+        path: "/home/testimonial",
+      },
+    ],
+  },
 ];

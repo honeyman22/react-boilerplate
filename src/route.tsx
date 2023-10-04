@@ -7,6 +7,7 @@ import Layout from "./components/common/layout";
 import Testimonial from "./pages/Home/testimonial";
 import Dashboard from "./pages/dashboard";
 import Login from "./login";
+import Role from "./pages/Role Management/roles";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,15 @@ export const router = createBrowserRouter([
       {
         path: "home/testimonial",
         element: <Testimonial />,
+      },
+      {
+        path: "role-management",
+        children: [
+          {
+            path: "roles",
+            element: <Role />,
+          },
+        ],
       },
     ],
   },

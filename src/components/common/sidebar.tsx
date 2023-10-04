@@ -33,7 +33,7 @@ const SideBar = ({
           (item: { name: string; path: string; submenu?: any; icon?: any }) => {
             if (item?.submenu) {
               return (
-                <>
+                <div key={item?.name}>
                   <div
                     onClick={() => {
                       if (open !== "") {
@@ -78,7 +78,7 @@ const SideBar = ({
                       ))}
                     </>
                   )}
-                </>
+                </div>
               );
             } else {
               return (
@@ -91,6 +91,7 @@ const SideBar = ({
                     }
                   }}
                   to={item?.path}
+                  key={item?.path}
                   className="w-full cursor-pointer hover:bg-slate-100  h-10 flex justify-between items-center"
                 >
                   <div className="flex items-center gap-2">
